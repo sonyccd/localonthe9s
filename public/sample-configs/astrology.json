@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "title": "Stars on the 8s",
+    "pageCycleDurationMs": 12000,
+    "transitionType": "wipe",
+    "transitionDurationMs": 1000
+  },
+  "header": {
+    "title": "Daily Horoscope",
+    "showClock": true,
+    "clockFormat": "12h"
+  },
+  "pages": [
+    {
+      "type": "forecast",
+      "title": "Fire Signs",
+      "cards": [
+        { "label": "Aries", "icon": "\u2648", "primary": "\u2605\u2605\u2605\u2605", "secondary": "Bold moves pay off" },
+        { "label": "Leo", "icon": "\u264c", "primary": "\u2605\u2605\u2605", "secondary": "Creative energy flows" },
+        { "label": "Sagittarius", "icon": "\u2650", "primary": "\u2605\u2605\u2605\u2605\u2605", "secondary": "Adventure awaits" }
+      ]
+    },
+    {
+      "type": "forecast",
+      "title": "Earth Signs",
+      "cards": [
+        { "label": "Taurus", "icon": "\u2649", "primary": "\u2605\u2605\u2605", "secondary": "Financial focus" },
+        { "label": "Virgo", "icon": "\u264d", "primary": "\u2605\u2605\u2605\u2605", "secondary": "Details matter today" },
+        { "label": "Capricorn", "icon": "\u2651", "primary": "\u2605\u2605\u2605", "secondary": "Patience rewarded" }
+      ]
+    },
+    {
+      "type": "forecast",
+      "title": "Air Signs",
+      "cards": [
+        { "label": "Gemini", "icon": "\u264a", "primary": "\u2605\u2605\u2605\u2605", "secondary": "Communication key" },
+        { "label": "Libra", "icon": "\u264e", "primary": "\u2605\u2605\u2605", "secondary": "Seek balance" },
+        { "label": "Aquarius", "icon": "\u2652", "primary": "\u2605\u2605\u2605\u2605\u2605", "secondary": "Innovation shines" }
+      ]
+    },
+    {
+      "type": "forecast",
+      "title": "Water Signs",
+      "cards": [
+        { "label": "Cancer", "icon": "\u264b", "primary": "\u2605\u2605\u2605\u2605", "secondary": "Home & family focus" },
+        { "label": "Scorpio", "icon": "\u264f", "primary": "\u2605\u2605\u2605", "secondary": "Transformation time" },
+        { "label": "Pisces", "icon": "\u2653", "primary": "\u2605\u2605\u2605\u2605", "secondary": "Intuition strong" }
+      ]
+    },
+    {
+      "type": "data-grid",
+      "title": "Celestial Overview",
+      "rows": [
+        { "label": "Moon Phase", "value": "Waxing Gibbous" },
+        { "label": "Moon Sign", "value": "Scorpio" },
+        { "label": "Sun Sign", "value": "Aquarius" },
+        { "label": "Mercury", "value": "Direct in Capricorn" },
+        { "label": "Venus", "value": "Pisces" },
+        { "label": "Mars", "value": "Gemini" },
+        { "label": "Lucky Numbers", "value": "3, 7, 14, 22, 38" },
+        { "label": "Power Color", "value": "Amethyst Purple" }
+      ]
+    }
+  ],
+  "ticker": {
+    "enabled": true,
+    "items": [
+      "Mercury direct \u2014 communication clears up",
+      "Full Moon in Leo this Friday",
+      "Venus enters Pisces \u2014 romance heightened",
+      "Mars square Neptune \u2014 avoid impulsive decisions",
+      "Jupiter trine Sun \u2014 expansion & optimism"
+    ],
+    "speedPixelsPerSecond": 60,
+    "separator": "\u2729"
+  },
+  "audio": {
+    "enabled": true,
+    "tracks": [
+      { "name": "Smooth Jazz 1", "url": "/audio/track1.mp3" },
+      { "name": "Smooth Jazz 2", "url": "/audio/track2.mp3" },
+      { "name": "Smooth Jazz 3", "url": "/audio/track3.mp3" }
+    ],
+    "volume": 0.5,
+    "crossfadeDurationS": 3,
+    "shuffle": false,
+    "autoplay": true
+  },
+  "theme": {
+    "backgroundGradient1": "#3a1a6a",
+    "backgroundGradient2": "#150a30",
+    "tickerBackground": "#2a0d4c",
+    "accentColor": "#cc88ff",
+    "labelColor": "#cc88ff",
+    "tickerTextColor": "#cc88ff"
+  }
+}

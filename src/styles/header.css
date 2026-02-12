@@ -1,0 +1,59 @@
+#header {
+  height: var(--header-height);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px 0 0;
+  border-bottom: none;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+/* Orange trapezoid — sits behind logo + title on the left side only */
+#header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(180deg, #d08020 0%, #b86818 100%);
+  padding: 6px 24px 8px 14px;
+  height: 100%;
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+}
+
+/* Logo box — the classic blue rounded rectangle with white border */
+#header-logo {
+  background: linear-gradient(180deg, #2848a0 0%, #1a3080 100%);
+  border: 2px solid #8899cc;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 9px;
+  font-weight: normal;
+  color: #ffffff;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.2),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.3),
+    2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+#header-title {
+  font-size: 18px;
+  font-weight: normal;
+  color: var(--header-color);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+#header-clock {
+  font-size: 18px;
+  color: var(--header-color);
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}

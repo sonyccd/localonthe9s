@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "title": "Local on the 8s",
+    "pageCycleDurationMs": 10000,
+    "transitionType": "fade",
+    "transitionDurationMs": 800
+  },
+  "header": {
+    "title": "Your Local Forecast",
+    "showClock": true,
+    "clockFormat": "12h"
+  },
+  "pages": [
+    {
+      "type": "data-grid",
+      "title": "Current Conditions",
+      "rows": [
+        { "label": "Temperature", "value": "72\u00b0F" },
+        { "label": "Feels Like", "value": "74\u00b0F" },
+        { "label": "Humidity", "value": "65%" },
+        { "label": "Wind", "value": "SW 8 mph" },
+        { "label": "Barometer", "value": "30.12 in" },
+        { "label": "Dewpoint", "value": "59\u00b0F" },
+        { "label": "Visibility", "value": "10 mi" },
+        { "label": "UV Index", "value": "6 High" }
+      ]
+    },
+    {
+      "type": "forecast",
+      "title": "5-Day Forecast",
+      "cards": [
+        { "label": "Mon", "icon": "\u2600\ufe0f", "primary": "78\u00b0", "secondary": "Lo 62\u00b0" },
+        { "label": "Tue", "icon": "\u26c5", "primary": "74\u00b0", "secondary": "Lo 58\u00b0" },
+        { "label": "Wed", "icon": "\ud83c\udf27\ufe0f", "primary": "68\u00b0", "secondary": "Lo 55\u00b0" },
+        { "label": "Thu", "icon": "\u26c8\ufe0f", "primary": "65\u00b0", "secondary": "Lo 52\u00b0" },
+        { "label": "Fri", "icon": "\u2600\ufe0f", "primary": "76\u00b0", "secondary": "Lo 60\u00b0" }
+      ]
+    },
+    {
+      "type": "table",
+      "title": "Almanac",
+      "columns": ["Metric", "Today", "Normal", "Record"],
+      "rows": [
+        ["High Temp", "78\u00b0F", "75\u00b0F", "98\u00b0F (1988)"],
+        ["Low Temp", "62\u00b0F", "58\u00b0F", "34\u00b0F (1972)"],
+        ["Precip", "0.00 in", "0.12 in", "2.45 in (1995)"],
+        ["Sunrise", "6:42 AM", "", ""],
+        ["Sunset", "8:18 PM", "", ""],
+        ["Moon Phase", "Waxing Gibbous", "", ""]
+      ]
+    }
+  ],
+  "ticker": {
+    "enabled": true,
+    "items": [
+      "Heat Advisory in effect Tue-Wed",
+      "High near 78\u00b0F today",
+      "Rain chances increase Wednesday 60%",
+      "Weekend outlook: Sunny and warm"
+    ],
+    "speedPixelsPerSecond": 80,
+    "separator": "\u2022"
+  },
+  "audio": {
+    "enabled": true,
+    "tracks": [
+      { "name": "Smooth Jazz 1", "url": "/audio/track1.mp3" },
+      { "name": "Smooth Jazz 2", "url": "/audio/track2.mp3" },
+      { "name": "Smooth Jazz 3", "url": "/audio/track3.mp3" }
+    ],
+    "volume": 0.6,
+    "crossfadeDurationS": 3,
+    "shuffle": false,
+    "autoplay": true
+  }
+}

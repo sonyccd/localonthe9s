@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local on the 8s</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌤</text></svg>" />
+  </head>
+  <body>
+    <div id="startup-overlay">
+      <div class="startup-content">
+        <div class="startup-title">Local on the 8s</div>
+        <div class="startup-subtitle">click anywhere to start</div>
+      </div>
+    </div>
+
+    <div id="display">
+      <div id="header">
+        <div id="header-left">
+          <div id="header-logo">THE<br>WEATHER<br>CHANNEL</div>
+          <div id="header-title"></div>
+        </div>
+        <div id="header-clock"></div>
+      </div>
+
+      <div id="stage-container">
+        <div id="stage-a" class="stage"></div>
+        <div id="stage-b" class="stage"></div>
+      </div>
+
+      <div id="ticker-bar">
+        <div id="ticker-track"></div>
+      </div>
+
+      <div id="scanline-overlay"></div>
+
+      <div id="volume-osd" class="volume-osd-hidden">
+        <div id="volume-osd-label">VOLUME</div>
+        <div id="volume-osd-bar"></div>
+        <div id="volume-osd-value"></div>
+      </div>
+    </div>
+
+    <div id="editor-overlay" class="hidden">
+      <div id="editor-panel">
+        <div id="editor-header">
+          <span>Configuration Editor</span>
+          <button id="editor-close">&times;</button>
+        </div>
+        <textarea id="editor-textarea" spellcheck="false"></textarea>
+        <div id="editor-status"></div>
+        <div id="editor-actions">
+          <button id="editor-apply">Apply</button>
+          <button id="editor-save">Save to Browser</button>
+          <button id="editor-export">Export JSON</button>
+          <button id="editor-import">Import JSON</button>
+          <button id="editor-reset">Reset to Default</button>
+        </div>
+        <input type="file" id="editor-file-input" accept=".json" class="hidden" />
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

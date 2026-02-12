@@ -1,0 +1,52 @@
+:root {
+  /* Display dimensions (original WeatherStar 4000) */
+  --display-width: 640;
+  --display-height: 480;
+
+  /* Layout zones */
+  --header-height: 56px;
+  --ticker-height: 48px;
+  --stage-height: 376px; /* 480 - 56 - 48 */
+
+  /* Background — WeatherStar gradient: blue at top → orange at bottom */
+  --bg-gradient-1: #1c3068;
+  --bg-gradient-2: #283c78;
+  --bg-gradient-3: #6a5040;
+  --bg-gradient-4: #c08030;
+
+  --header-bg: transparent;
+  --ticker-bg: #182040;
+  --ticker-text: #ffffff;
+
+  /* Text colors — clean broadcast TV */
+  --label-color: #ffcc00;
+  --value-color: #ffffff;
+  --header-color: #ffffff;
+  --muted-color: #99aacc;
+  --city-color: #44cccc;
+
+  /* Accent */
+  --accent-1: #ffcc00;
+  --accent-2: #44bbff;
+  --accent-3: #66dd66;
+
+  /* Panel styling — 90s beveled 3D raised panel */
+  --panel-bg: #101c40;
+  --panel-border-light: rgba(120, 140, 200, 0.4);
+  --panel-border-dark: rgba(0, 0, 0, 0.5);
+  --panel-radius: 0px;
+
+  /* Fonts */
+  --font-primary: 'VCR OSD Mono', 'Courier New', monospace;
+  --font-secondary: 'PixelOperator', 'Courier New', monospace;
+
+  /* Transitions */
+  --transition-duration: 800ms;
+
+  /* Scanlines */
+  --scanline-opacity: 0.06;
+  --scanline-size: 2px;
+
+  /* Ticker */
+  --ticker-speed: 80px;
+}

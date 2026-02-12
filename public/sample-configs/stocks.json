@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "title": "Market on the 8s",
+    "pageCycleDurationMs": 8000,
+    "transitionType": "slide-left",
+    "transitionDurationMs": 600
+  },
+  "header": {
+    "title": "Market Watch",
+    "showClock": true,
+    "clockFormat": "24h"
+  },
+  "pages": [
+    {
+      "type": "data-grid",
+      "title": "Market Indices",
+      "rows": [
+        { "label": "S&P 500", "value": "4,587.64  +0.42%" },
+        { "label": "DJIA", "value": "35,842.18  +0.38%" },
+        { "label": "NASDAQ", "value": "14,261.50  +0.57%" },
+        { "label": "Russell 2000", "value": "2,034.67  +0.21%" },
+        { "label": "10-Yr Treasury", "value": "4.32%  -0.02" },
+        { "label": "Crude Oil", "value": "$78.42  +1.15" },
+        { "label": "Gold", "value": "$2,041.30  +8.50" },
+        { "label": "Bitcoin", "value": "$43,218  +2.3%" }
+      ]
+    },
+    {
+      "type": "table",
+      "title": "Top Movers",
+      "columns": ["Symbol", "Price", "Change", "Volume"],
+      "rows": [
+        ["NVDA", "$487.21", "+4.82%", "52.3M"],
+        ["AAPL", "$185.64", "+1.23%", "48.1M"],
+        ["TSLA", "$242.18", "-2.15%", "112.7M"],
+        ["MSFT", "$378.45", "+0.87%", "22.4M"],
+        ["AMZN", "$153.28", "+1.45%", "35.6M"],
+        ["META", "$352.67", "+2.34%", "18.9M"],
+        ["GOOGL", "$141.52", "+0.65%", "24.3M"]
+      ]
+    },
+    {
+      "type": "forecast",
+      "title": "Sector Performance",
+      "cards": [
+        { "label": "Tech", "primary": "+1.2%", "secondary": "Strong" },
+        { "label": "Health", "primary": "+0.4%", "secondary": "Steady" },
+        { "label": "Energy", "primary": "-0.8%", "secondary": "Weak" },
+        { "label": "Finance", "primary": "+0.6%", "secondary": "Moderate" },
+        { "label": "Real Est", "primary": "-0.3%", "secondary": "Mixed" }
+      ]
+    },
+    {
+      "type": "data-grid",
+      "title": "Currency & Commodities",
+      "rows": [
+        { "label": "EUR/USD", "value": "1.0892" },
+        { "label": "GBP/USD", "value": "1.2734" },
+        { "label": "USD/JPY", "value": "148.42" },
+        { "label": "Silver", "value": "$24.18" },
+        { "label": "Nat Gas", "value": "$2.84" },
+        { "label": "Copper", "value": "$3.82" },
+        { "label": "VIX", "value": "13.42" },
+        { "label": "Fed Funds", "value": "5.25-5.50%" }
+      ]
+    }
+  ],
+  "ticker": {
+    "enabled": true,
+    "items": [
+      "S&P 500 +0.42% | DJIA +0.38% | NASDAQ +0.57%",
+      "NVDA leads tech rally +4.82%",
+      "Fed minutes suggest rate pause likely",
+      "Crude oil rises on supply concerns",
+      "Earnings season: 78% beat expectations"
+    ],
+    "speedPixelsPerSecond": 90,
+    "separator": "\u2022"
+  },
+  "audio": {
+    "enabled": true,
+    "tracks": [
+      { "name": "Smooth Jazz 1", "url": "/audio/track1.mp3" },
+      { "name": "Smooth Jazz 2", "url": "/audio/track2.mp3" },
+      { "name": "Smooth Jazz 3", "url": "/audio/track3.mp3" }
+    ],
+    "volume": 0.5,
+    "crossfadeDurationS": 3,
+    "shuffle": false,
+    "autoplay": true
+  },
+  "theme": {
+    "backgroundGradient1": "#1a5a2a",
+    "backgroundGradient2": "#0a2810",
+    "tickerBackground": "#0d3c1c",
+    "accentColor": "#44ff88",
+    "labelColor": "#44ff88",
+    "tickerTextColor": "#44ff88"
+  }
+}

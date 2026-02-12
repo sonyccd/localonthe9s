@@ -1,0 +1,270 @@
+/* Stage container — holds double-buffered panels */
+#stage-container {
+  position: relative;
+  height: var(--stage-height);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  /* 90s beveled raised panel */
+  margin: 4px 12px;
+  background: var(--panel-bg);
+  border-top: 2px solid var(--panel-border-light);
+  border-left: 2px solid var(--panel-border-light);
+  border-bottom: 2px solid var(--panel-border-dark);
+  border-right: 2px solid var(--panel-border-dark);
+}
+
+.stage.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Page title within stage */
+.page-title {
+  font-size: 20px;
+  color: var(--accent-1);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* ──── Data Grid Panel ──── */
+.data-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.data-grid-row {
+  display: flex;
+  align-items: baseline;
+  padding: 5px 0;
+}
+
+.data-grid-label {
+  flex: 0 0 50%;
+  font-size: 17px;
+  color: var(--value-color);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.data-grid-value {
+  flex: 1;
+  font-size: 18px;
+  color: var(--value-color);
+  text-align: right;
+  letter-spacing: 0.5px;
+}
+
+/* ──── Forecast Panel ──── */
+.forecast-grid {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  align-items: stretch;
+}
+
+.forecast-card {
+  flex: 1;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 10px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+}
+
+.forecast-card-label {
+  font-size: 14px;
+  color: var(--accent-1);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.forecast-card-icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.forecast-card-primary {
+  font-size: 24px;
+  color: var(--value-color);
+  font-weight: normal;
+}
+
+.forecast-card-secondary {
+  font-size: 12px;
+  color: var(--muted-color);
+  letter-spacing: 0.5px;
+}
+
+/* ──── Table Panel ──── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  flex: 1;
+}
+
+.data-table thead th {
+  font-size: 14px;
+  color: var(--accent-1);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 6px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  font-weight: normal;
+}
+
+.data-table tbody td {
+  font-size: 15px;
+  color: var(--value-color);
+  padding: 5px 10px;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* ──── Freeform Panel ──── */
+.freeform-content {
+  flex: 1;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--value-color);
+}
+
+.freeform-content h1, .freeform-content h2, .freeform-content h3 {
+  color: var(--accent-1);
+  margin-bottom: 8px;
+}
+
+.freeform-content strong {
+  color: var(--accent-1);
+}
+
+/* ──── Bar Chart Panel ──── */
+.bar-chart {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  align-items: flex-end;
+  padding: 0 20px 4px 4px;
+}
+
+.bar-chart-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.bar-chart-value {
+  font-size: 14px;
+  color: var(--value-color);
+  letter-spacing: 0.5px;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0;
+  animation: bar-value-appear 0.01s steps(1) forwards;
+}
+
+.bar-chart-bar-wrap {
+  width: 100%;
+  height: 230px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* The 3D bar container — scaleY animates this and all children together */
+.bar-chart-bar {
+  position: relative;
+  width: 70%;
+  max-width: 52px;
+  transform-origin: bottom center;
+  animation: bar-grow 0.5s steps(8) forwards;
+  transform: scaleY(0);
+  overflow: visible;
+}
+
+/* Front face — the main visible bar */
+.bar-face-front {
+  position: absolute;
+  inset: 0;
+  background: var(--accent-2);
+}
+
+/* Top face — parallelogram extending upper-right
+   Element: width = bar + 12px, height = 12px, sits above bar
+   Vertices (in element coords):
+     bottom-left  (0, 12)        = bar's top-left
+     top-left     (12px, 0)      = offset upper-right
+     top-right    (W+12, 0)      = offset upper-right
+     bottom-right (W, 12)        = bar's top-right */
+.bar-face-top {
+  position: absolute;
+  top: -12px;
+  left: 0;
+  width: calc(100% + 12px);
+  height: 12px;
+  background: color-mix(in srgb, var(--accent-2) 60%, white);
+  clip-path: polygon(0% 100%, 12px 0%, 100% 0%, calc(100% - 12px) 100%);
+}
+
+/* Right face — parallelogram extending upper-right
+   Element: width = 12px, height = bar + 12px, sits to right and above bar
+   Vertices (in element coords, where y=12 = bar's top, y=height = bar's bottom):
+     top-left     (0, 12px)                  = bar's top-right
+     top-right    (12px, 0)                  = offset upper-right
+     bottom-right (12px, calc(100% - 12px))  = offset from bar's bottom
+     bottom-left  (0, 100%)                  = bar's bottom-right */
+.bar-face-right {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 12px;
+  height: calc(100% + 12px);
+  background: color-mix(in srgb, var(--accent-2) 45%, black);
+  clip-path: polygon(0% 12px, 100% 0%, 100% calc(100% - 12px), 0% 100%);
+}
+
+.bar-chart-label {
+  font-size: 12px;
+  color: var(--accent-1);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Chunky stepped grow — no easing, pure steps */
+@keyframes bar-grow {
+  0%   { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+}
+
+/* Value just snaps in — no fade */
+@keyframes bar-value-appear {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}

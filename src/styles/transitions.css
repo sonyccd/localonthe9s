@@ -1,0 +1,69 @@
+/* ──── Fade transition ──── */
+.stage.transition-fade-enter {
+  opacity: 0;
+}
+.stage.transition-fade-enter-active {
+  opacity: 1;
+  transition: opacity var(--transition-duration) ease-in-out;
+}
+.stage.transition-fade-exit {
+  opacity: 1;
+}
+.stage.transition-fade-exit-active {
+  opacity: 0;
+  transition: opacity var(--transition-duration) ease-in-out;
+}
+
+/* ──── Slide Left transition ──── */
+.stage.transition-slide-left-enter {
+  opacity: 1;
+  transform: translateX(100%);
+}
+.stage.transition-slide-left-enter-active {
+  transform: translateX(0);
+  transition: transform var(--transition-duration) ease-in-out;
+}
+.stage.transition-slide-left-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+.stage.transition-slide-left-exit-active {
+  transform: translateX(-100%);
+  transition: transform var(--transition-duration) ease-in-out;
+}
+
+/* ──── Slide Up transition ──── */
+.stage.transition-slide-up-enter {
+  opacity: 1;
+  transform: translateY(100%);
+}
+.stage.transition-slide-up-enter-active {
+  transform: translateY(0);
+  transition: transform var(--transition-duration) ease-in-out;
+}
+.stage.transition-slide-up-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.stage.transition-slide-up-exit-active {
+  transform: translateY(-100%);
+  transition: transform var(--transition-duration) ease-in-out;
+}
+
+/* ──── Wipe transition (reveal via clip-path) ──── */
+.stage.transition-wipe-enter {
+  opacity: 1;
+  clip-path: inset(0 100% 0 0);
+}
+.stage.transition-wipe-enter-active {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path var(--transition-duration) ease-in-out;
+}
+.stage.transition-wipe-exit {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+.stage.transition-wipe-exit-active {
+  clip-path: inset(0 0 0 100%);
+  transition: clip-path var(--transition-duration) ease-in-out;
+}

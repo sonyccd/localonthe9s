@@ -1,0 +1,125 @@
+#display {
+  position: relative;
+  width: calc(var(--display-width) * 1px);
+  height: calc(var(--display-height) * 1px);
+  background: linear-gradient(180deg,
+    var(--bg-gradient-1) 0%,
+    var(--bg-gradient-2) 30%,
+    var(--bg-gradient-3) 70%,
+    var(--bg-gradient-4) 100%
+  );
+  font-family: var(--font-primary);
+  color: var(--value-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform-origin: center center;
+  image-rendering: pixelated;
+  -webkit-font-smoothing: none;
+}
+
+/* Startup overlay */
+#startup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: var(--font-primary);
+}
+
+#startup-overlay.hidden {
+  display: none;
+}
+
+.startup-content {
+  text-align: center;
+}
+
+.startup-title {
+  font-size: 36px;
+  color: var(--label-color);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  text-shadow: none;
+}
+
+.startup-subtitle {
+  font-size: 16px;
+  color: var(--muted-color);
+  letter-spacing: 2px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ──── Retro CRT Volume OSD ──── */
+#volume-osd {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.82);
+  border: 2px solid #333;
+  border-radius: 2px;
+  padding: 10px 18px 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-primary);
+  opacity: 1;
+}
+
+#volume-osd.volume-osd-hidden {
+  display: none;
+}
+
+#volume-osd-label {
+  color: #00ee00;
+  font-size: 14px;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  min-width: 52px;
+  text-shadow: 0 0 6px rgba(0, 238, 0, 0.5);
+}
+
+#volume-osd-bar {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  height: 18px;
+}
+
+.volume-block {
+  width: 12px;
+  height: 18px;
+  background: #00ee00;
+  box-shadow: 0 0 4px rgba(0, 238, 0, 0.4);
+  border-radius: 1px;
+}
+
+.volume-block.off {
+  background: #1a2a1a;
+  box-shadow: none;
+}
+
+#volume-osd-value {
+  color: #00ee00;
+  font-size: 14px;
+  letter-spacing: 1px;
+  min-width: 36px;
+  text-align: right;
+  text-shadow: 0 0 6px rgba(0, 238, 0, 0.5);
+}
