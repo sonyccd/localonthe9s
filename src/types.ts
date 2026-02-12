@@ -102,6 +102,13 @@ export interface AudioTrack {
   url: string;
 }
 
+export interface ExportProgress {
+  phase: 'preparing' | 'recording' | 'encoding' | 'done' | 'error';
+  currentPage: number;
+  totalPages: number;
+  errorMessage?: string;
+}
+
 export interface ThemeConfig {
   backgroundGradient1?: string;
   backgroundGradient2?: string;
