@@ -1,5 +1,7 @@
 # Local on the 8s
 
+[Demo](https://localonthe9s.vercel.app/)
+
 A retro Weather Channel "Local on the 8s" style data presentation tool. Feed it any data — weather, stocks, horoscopes, whatever — and it renders in the authentic 1990s WeatherStar 4000 aesthetic with smooth jazz, scrolling tickers, and page cycling.
 
 The humor is that the format treats stock prices and horoscopes with the same deadpan sincerity as weather data.
