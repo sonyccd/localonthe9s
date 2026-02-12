@@ -175,10 +175,10 @@ export const sampleWeatherConfig: AppConfig = {
     enabled: true,
     tracks: [
       { name: 'Smooth Jazz 1', url: '/audio/happinessinmusic-the-jazz-482573.mp3' },
-      { name: 'Smooth Jazz 2', url: '' },
-      { name: 'Smooth Jazz 3', url: '' },
+      { name: 'Smooth Jazz 2', url: '/audio/happinessinmusic-the-jazz-music-no-copyright-482578.mp3' },
+      { name: 'Smooth Jazz 3', url: '/audio/happinessinmusic-the-no-copyright-jazz-music-482572.mp3' },
     ],
-    volume: 0.6,
+    volume: 0.5,
     crossfadeDurationS: 3,
     shuffle: false,
     autoplay: true,
