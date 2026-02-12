@@ -12,6 +12,9 @@ export class AudioEngine {
   private nextSource: AudioBufferSourceNode | null = null;
   private nextGain: GainNode | null = null;
 
+  private masterOutput: GainNode | null = null;
+  private exportDest: MediaStreamAudioDestinationNode | null = null;
+
   private playing = false;
   private muted = false;
   private crossfadeTimer: ReturnType<typeof setTimeout> | null = null;
@@ -26,6 +29,10 @@ export class AudioEngine {
   async init(): Promise<void> {
     if (this.ctx) return;
     this.ctx = new AudioContext();
+
+    // Master output bus — all sources route through here so we can tap it for export
+    this.masterOutput = this.ctx.createGain();
+    this.masterOutput.connect(this.ctx.destination);
 
     // Pre-fetch all tracks
     const fetches = this.config.tracks.map(t => this.loadTrack(t));
@@ -78,7 +85,7 @@ export class AudioEngine {
     gain.gain.value = this.muted ? 0 : this.volume;
 
     source.connect(gain);
-    gain.connect(this.ctx.destination);
+    gain.connect(this.masterOutput!);
 
     source.start(0);
     this.currentSource = source;
@@ -135,7 +142,7 @@ export class AudioEngine {
     );
 
     source.connect(gain);
-    gain.connect(this.ctx.destination);
+    gain.connect(this.masterOutput!);
     source.start(0);
 
     this.nextSource = source;
@@ -205,6 +212,20 @@ export class AudioEngine {
       if (this.nextGain) {
         this.nextGain.gain.linearRampToValueAtTime(this.volume, now + 0.05);
       }
+    }
+  }
+
+  createExportStream(): MediaStream | null {
+    if (!this.ctx || !this.masterOutput) return null;
+    this.exportDest = this.ctx.createMediaStreamDestination();
+    this.masterOutput.connect(this.exportDest);
+    return this.exportDest.stream;
+  }
+
+  stopExportStream(): void {
+    if (this.masterOutput && this.exportDest) {
+      this.masterOutput.disconnect(this.exportDest);
+      this.exportDest = null;
     }
   }
 

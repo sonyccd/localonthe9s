@@ -8,6 +8,7 @@ import './styles/ticker.css';
 import './styles/transitions.css';
 import './styles/scanlines.css';
 import './styles/editor.css';
+import './styles/export.css';
 
 import type { AppConfig } from './types.ts';
 import { getDefaultConfig, applyTheme, resetTheme, validateConfig } from './config/schema.ts';
@@ -94,6 +95,29 @@ function handleConfigUpdate(newConfig: AppConfig): void {
   audioEngine.update(config.audio);
 }
 
+// ─── Video Export ───
+
+async function handleVideoExport(exportConfig: AppConfig): Promise<void> {
+  document.body.classList.add('exporting');
+  engine.stop();
+
+  // Tap the audio master bus to capture whatever is currently playing
+  const audioStream = audioEngine.createExportStream();
+
+  try {
+    const { VideoExporter } = await import('./export/VideoExporter.ts');
+    const exporter = new VideoExporter(exportConfig);
+    await exporter.export({
+      onBeforeExport: () => {},
+      onAfterExport: () => {},
+    }, audioStream);
+  } finally {
+    audioEngine.stopExportStream();
+    document.body.classList.remove('exporting');
+    engine.updateConfig(config);
+  }
+}
+
 // ─── Volume OSD ───
 
 function showVolumeOSD(): void {
@@ -132,6 +156,9 @@ function showVolumeOSD(): void {
 // ─── Keyboard Shortcuts ───
 
 function handleKeyboard(e: KeyboardEvent): void {
+  // Block all shortcuts during video export
+  if (document.body.classList.contains('exporting')) return;
+
   // Don't capture when editor textarea is focused
   if (editorUI?.isVisible() && e.target instanceof HTMLTextAreaElement) {
     if (e.key === 'Escape') {
@@ -201,7 +228,7 @@ async function init(): Promise<void> {
   engine = new PresentationEngine(config);
   tickerManager = new TickerManager(config.ticker);
   audioEngine = new AudioEngine(config.audio);
-  editorUI = new EditorUI(handleConfigUpdate);
+  editorUI = new EditorUI(handleConfigUpdate, handleVideoExport);
 
   // Keyboard shortcuts
   document.addEventListener('keydown', handleKeyboard);

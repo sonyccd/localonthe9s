@@ -4,6 +4,7 @@ import { validateConfig, getDefaultConfig } from '../config/schema.ts';
 const STORAGE_KEY = 'localonthe8s_config';
 
 export type OnApplyCallback = (config: AppConfig) => void;
+export type OnExportVideoCallback = (config: AppConfig) => Promise<void>;
 
 export class EditorUI {
   private overlay: HTMLElement;
@@ -11,14 +12,16 @@ export class EditorUI {
   private statusEl: HTMLElement;
   private fileInput: HTMLInputElement;
   private onApply: OnApplyCallback;
+  private onExportVideo?: OnExportVideoCallback;
   private visible = false;
 
-  constructor(onApply: OnApplyCallback) {
+  constructor(onApply: OnApplyCallback, onExportVideo?: OnExportVideoCallback) {
     this.overlay = document.getElementById('editor-overlay')!;
     this.textarea = document.getElementById('editor-textarea') as HTMLTextAreaElement;
     this.statusEl = document.getElementById('editor-status')!;
     this.fileInput = document.getElementById('editor-file-input') as HTMLInputElement;
     this.onApply = onApply;
+    this.onExportVideo = onExportVideo;
 
     this.bindButtons();
   }
@@ -32,6 +35,8 @@ export class EditorUI {
     document.getElementById('editor-reset')!.addEventListener('click', () => this.reset());
 
     this.fileInput.addEventListener('change', () => this.importJSON());
+
+    document.getElementById('editor-export-video')!.addEventListener('click', () => this.exportVideo());
   }
 
   show(config: AppConfig): void {
@@ -129,6 +134,32 @@ export class EditorUI {
     localStorage.removeItem(STORAGE_KEY);
     this.onApply(defaultConfig);
     this.setStatus('Reset to default config', false);
+  }
+
+  private async exportVideo(): Promise<void> {
+    if (!this.onExportVideo) return;
+
+    let parsed: unknown;
+    try {
+      parsed = JSON.parse(this.textarea.value);
+    } catch (e) {
+      this.setStatus(`JSON parse error: ${(e as Error).message}`, true);
+      return;
+    }
+
+    const result = validateConfig(parsed);
+    if (!result.valid) {
+      this.setStatus(`Validation error: ${result.error}`, true);
+      return;
+    }
+
+    this.hide();
+
+    try {
+      await this.onExportVideo(result.config);
+    } catch (e) {
+      this.setStatus(`Export error: ${(e as Error).message}`, true);
+    }
   }
 
   private setStatus(msg: string, isError: boolean): void {
