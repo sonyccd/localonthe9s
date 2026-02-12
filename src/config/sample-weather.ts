@@ -180,7 +180,7 @@ export const sampleWeatherConfig: AppConfig = {
     ],
     volume: 0.5,
     crossfadeDurationS: 3,
-    shuffle: false,
+    shuffle: true,
     autoplay: true,
   },
 };
