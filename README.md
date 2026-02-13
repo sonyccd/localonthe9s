@@ -4,7 +4,9 @@
 
 A retro Weather Channel "Local on the 8s" style data presentation tool. Feed it any data — weather, stocks, horoscopes, whatever — and it renders in the authentic 1990s WeatherStar 4000 aesthetic with smooth jazz, scrolling tickers, and page cycling.
 
-The humor is that the format treats stock prices and horoscopes with the same deadpan sincerity as weather data.
+<img width="300" alt="Screenshot 2026-02-13 at 10 03 41 AM" src="https://github.com/user-attachments/assets/86363acc-d339-44a2-972d-f0add1ebe1e8" />
+<img width="300" alt="Screenshot 2026-02-13 at 10 03 53 AM" src="https://github.com/user-attachments/assets/bb688f2c-89fd-455f-ac4e-ac91e3c02cf7" />
+<img width="300" alt="Screenshot 2026-02-13 at 10 04 12 AM" src="https://github.com/user-attachments/assets/be9ced0f-bf97-4343-ba43-68fe5876cedf" />
 
 ## Features
 
