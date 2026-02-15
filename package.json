@@ -19,6 +19,7 @@
     "vitest": "^4.0.18"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.6.1",
     "html2canvas": "^1.4.1"
   }
 }
