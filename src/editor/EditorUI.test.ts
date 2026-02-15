@@ -3,15 +3,16 @@ import { EditorUI } from './EditorUI.ts';
 import { setupDOM } from '../test-helpers/dom-setup.ts';
 import { createTestConfig } from '../test-helpers/fixtures.ts';
 import type { AppConfig } from '../types.ts';
+import type { OnApplyCallback } from './EditorUI.ts';
 
 describe('EditorUI', () => {
-  let onApply: ReturnType<typeof vi.fn>;
+  let onApply: ReturnType<typeof vi.fn<OnApplyCallback>>;
   let editor: EditorUI;
   let mockStorage: Record<string, string>;
 
   beforeEach(() => {
     setupDOM();
-    onApply = vi.fn();
+    onApply = vi.fn<OnApplyCallback>();
     editor = new EditorUI(onApply);
 
     // Mock localStorage
