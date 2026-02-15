@@ -46,21 +46,30 @@ export class HeaderRenderer {
 
   private updateClock(): void {
     const now = new Date();
+    const dateStr = now.toLocaleDateString('en-US', {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+    });
+    let timeStr: string;
     if (this.config.clockFormat === '24h') {
-      this.clockEl.textContent = now.toLocaleTimeString('en-US', {
+      timeStr = now.toLocaleTimeString('en-US', {
         hour12: false,
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
       });
     } else {
-      this.clockEl.textContent = now.toLocaleTimeString('en-US', {
+      timeStr = now.toLocaleTimeString('en-US', {
         hour12: true,
         hour: 'numeric',
         minute: '2-digit',
         second: '2-digit',
       });
     }
+    this.clockEl.innerHTML =
+      `<div class="header-date">${dateStr}</div>` +
+      `<div class="header-time">${timeStr}</div>`;
   }
 
   destroy(): void {

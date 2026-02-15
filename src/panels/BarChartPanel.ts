@@ -78,7 +78,7 @@ export function renderBarChart(config: BarChartPageConfig): HTMLElement {
 }
 
 /** Simple color lightening by mixing with white */
-function lighten(hex: string): string {
+export function lighten(hex: string): string {
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
@@ -87,7 +87,7 @@ function lighten(hex: string): string {
 }
 
 /** Simple color darkening by mixing with black */
-function darken(hex: string): string {
+export function darken(hex: string): string {
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);

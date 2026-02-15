@@ -51,9 +51,18 @@
 }
 
 #header-clock {
-  font-size: 18px;
   color: var(--header-color);
   letter-spacing: 1px;
   font-variant-numeric: tabular-nums;
   text-align: right;
+  line-height: 1.2;
+}
+
+.header-date {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.header-time {
+  font-size: 18px;
 }
